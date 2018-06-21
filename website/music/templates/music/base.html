@@ -1,0 +1,84 @@
+
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+<link  rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Satisfy'>
+<link rel="stylesheet" type='text/css' href='{% static 'music/style.css ' %}'/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<title>{% block title %}CSONG{% endblock %}</title>
+
+</head>
+
+<body> 
+<nav class="nav-bar navbar-inverse">
+	<div class="nav-bar container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="{% url 'index' %}">Csong</a>			
+		<buttton type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			
+		</div>
+		<!-- Items -->
+
+		
+		<div class="collapse navbar-collapse" id="topNavBar">
+			<ul class="nav navbar-nav">
+				<li class="active">
+					<a href="{% url 'index' %}">
+						<span class="glyphicon glyphicon-cd" aria-hidden='true'></span>&nbsp; Albums
+					</a>
+				</li>
+				<li class="">
+					<a href="#">
+						<span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp; Songs
+					</a>
+				</li>
+			</ul>	
+			<form class="navbar-form navbar-left" role="search" method="get" action="#">
+				<div class="form-group">
+					<input type="text" class="form-control" name="q" value="">
+				</div><!--dav-->
+				<button type="submit" class="btn btn-default">Search
+				</button>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="">
+					<a href="{% url 'album-add' %}">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Album
+					</a>
+				</li>
+				<li class="">
+					<a href="{% url 'register' %}">
+						<img height="20px" width="20px"
+						src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB2CAMAAAAqeZcjAAAAaVBMVEX///8AAADp6enw8PD29vb5+fnY2NioqKgPDw8XFxf8/Pzz8/Ps7OyysrLm5uajo6OIiIhHR0clJSVAQEBUVFQ5OTnCwsIbGxvR0dF/f390dHQ0NDRaWlq8vLxPT09paWmYmJgsLCyQkJC2AYL/AAAIOElEQVRogb1b55qqMBBFqtIEBARUiu//kNdMEggwKeh+9/zZFSEnmZ4JWtZhxE1yzYY+/6DvsmvSOMfHOIb0lU0nBFP2sv8zpUCd/jWnH+QXFSfFJQ/+kNl5Pc+b8YuqJOirYjOby/MV/QlpHFTCsMWzfQe+HTsuwIltP3i3ZSHccgt+tzH7+pjHuz+z2naxu1y7zp73+cbqGv9EGl1nKyq6JPVU93pp0s2LngLlvWo0PR/mGRg5iH0t5yeaL0ntlg8xmA8RNgN/KvtK0i8usc4/9qDfcUnXh0k9/mz3hSemfMXtQQ37ObPJ4xMG1Mz+80OTTmh4OI9fu74zUt5zYv7MlT7SH1TqGj5zg8Dw/pBZ8PvHKBdlbByjux1qDxdcOq6dAoziX8IMKzRgfVLjxwTs1W3Og9ZgEgB96oQDGlFFhHStFTZmsIRnU9+y6SOt7j6q1xvib+nttMOo5Y0qE/1SG+6Rb1570g9KbTwI6WyvqnuoDeTINwHKejo99Lx0vQr/raUSxtcqk8waEej3LA0CLsyrQKwpPUtpDdzSBnvOZXIBI75js3rKWU8nfVb0YdYd/iVV7Av5plaxngZ9NJAPbaV3qciUizVZrgVx8oL4OY0TTyye+GrWU6anjXqJmBOpYq1RQ1sZBGiq3l32dsCK8SRVqlmR0RBAILptJwgrwmOOPeloTVKqC0lkE6yoPeG20ehYjTIbHaZY171gaZI8oXYfgqdRpQZF4cpTUthASSrwq5b2ps2nQALLFZ3oTa7I/EBnyB9as/IHkuq4fAajOcu2G5mW1sSDLLZc4V7wWWkF8NbTGhZ7oN0lA0IIkSamv9ItC3dP/qlZfdpBluEX5Ia0ENznxAs2g6YHgN6BBtOtDqyAhYyQZP+H3Cp0mcAoF1DEE1EJ/R9krCgp00lHa7rfoEbFpAwrV0XzXsNqlAoooCajtkxi9ENV4rcaVuXDa0BZRa2XBEZJnSNMUQGzkExBiokL+afRaict1LTK0nsD8BqiXKJaeRE7T1EOzcNrNFy5xIU1QTVR0vYm2ZYjfjCVnnSq/VQ8k4r2QJuAVYrnT01HntT5uyobTMc6jJDPBGGrkCpox0OsNLH4VG/aAluec+8HOxwQ4V9gyBdtQ9GRNrHNAyMF7OISCEGTPszIjPl2kJXGqTf4z65qRiDx3cOtQYd40AARGd35bBDdMdajIma7odKaTkZbRdyajRPtAg/EaxFRa6IFwz4j7BQbxmlqq00b4sUD8o+2bUShXqzrj898ul+Kqu9quWsA7WTdzWl3jSkhvcfj6tuLtOHOaM2FvN/Uz0NH496vBzwxMSEXpiZlWbu0y2nrakdK8MaGZSZFZGNWHuwrSLZ9k9bvT0TFLnGgHiSXm8RV77EblupWsUeq9tEE2gYDlJCKInlGM+0GHXWsWFaMiaoykJA2FdhXRHu0SajZqlS7oUgqCGiMV1dDTYf2/kDEa4UXt6q6rZWx9RKW32v6RwrvJWmGQQkV5qtrV8vzwk2DcuPAAb0Wkz/SdmVYS7tDMNVNPgxmMS7YRFAwBVddwjXyUrUg1u9tVI7RbrYqMKJFdzh4wrUzRT8XAup2D4rSluKY4D9kNwKmjGXrFx57xDVshYHSrkoB/8xuk9hUpNlwEfk4WwKcVtysMIv6RCty1y4HpflJiYoUJLv+HE47COOS6ARbL4v42Va52h08DLXrWMG6dmXItMTemCiOHoGMfN0HWGmG52e89zpyADTl0P8de3b4ZU3C9rKZh+FwtKzU07lF3dGc7s20Sz3cLkv0SHBeJSGNXglGch8fF6d197QOSbMPcQqCU6v3lca0yGrrWVD8wxKoQqW/MqyFjKYShBYe4HN0ydLvs1Pr7enEPI679iXxKcB2QvbBn8M5NylIEvlc6ozi2rUdEgA40K6aAQeyt1crvumANLBsJHxS983eZaLa08PF5IKHC64/KCzEPnY3T9WUFlrt0bZMVQdHEKroqfT4IDogZBrFu81FnJZZFOyR120deH48YFJUctugjNLykPyeH1u0CzdQsYf7yhQDmOcmsKC0jUCx7WG1wlTMpAwUNXItXtPyc2Xw2W31RBt8L2EOOtB6dZ3oRyeOY39N6wuGOu0qY/DBB7usPww5MaNaZ7l7QbCeCVvWRD7sN/8exBSu8RfytsMWdC+h0Qg7gmDHtMheq1mW8IET6NNQtohJht4RZInvAsCbF1Nzm+ymeaWyXp7DUdrikiQNYBCz+FqL5ydtXsirVhboEtnsOrZWehQrO/KhB4zbQ1zXfwXvrnxg9OzcyUdPE858dR7oCy2KAdQ8BtnXYZx+0lnT1HXT+H6aRiHPYWGw71otL/rQvCs/aGJqMmxlrJGsV/xe1jaoFCve8hWv5SbvZ0Fe2+2uosnSIdXNoKj8gRcFZS017UWHysqwd6OFR1l7bZfCoWGi/O2dWwa7N2Sd11v99LYhRfMwZp15Ja/+mSMMqKeXhmcYEStw258EbbOKpzU9U57DbKVwcQ3CF6tRjpzEWS8WZocv35z3Wfq/HJx4yoPOaC6jGS5PSuXhWYe8wpiCgyc90ZXXF+NRUoKG72Ee44FfZtgjLzyfX7qgF/BpF11t5nt1x1PRlHz/rv3y1vvplvkaYTufcmS+Pfvtpyu+UJH2bZJKDCxKk1Yovo6+JY9g1V+99O078W1nZncd20/ebS/UNefu258UrOGPmyryfiuHLvugG8rbpq7Ixz8I5gxh02peC2CmlzV/lDE53PpaKTqfH9nervUPPxRRUo+SdsptrL+IZkdg18k45AWotCjyYUwUR2sy/ANPKGnw8NcaCQAAAABJRU5ErkJggg=="  aria-hidden="true"/>
+					</a>
+				</li>
+				<li class="">
+					<a href="#">
+						<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<br/>
+<br/>
+<br/>
+
+{% block body %}
+
+{% endblock  %}
+</body>	   
+</html>

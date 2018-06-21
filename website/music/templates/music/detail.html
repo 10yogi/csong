@@ -1,0 +1,46 @@
+{% extends 'music/base.html' %}
+
+{% block title %}Album Details{% endblock %}
+
+{% block body %}
+	<div class="container-fluid songs-container">
+		<div class="row">
+			<!-- left Album Info -->
+			<div class ="col-sm-4 col-md-3">
+				<div class ="panel panel-default">
+					<div class = "panel-body">
+						<a href="{% url 'detail' album.id %}">
+							<img src="{{ album.album_logo.url}}" class="img-responsive">
+						</a>
+						<h1>{{ album.album_title }}
+							<small>{{ album.genre }}</small>
+						</h1>
+						<h2>{{ album.artist }}</h2>
+					</div>
+				</div>
+			</div> 
+			<!-- Right Song Info -->
+			<div class ="col-sm-8 col-md-9">
+				<ul class="nav nav-pills" style="margin-bottom: 10 px;">
+					<li class="active"><a href="{% url 'detail' album.id %}" >View All </a></li>
+					<li><a href="#">Add New Song</a></li>
+				</ul>
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h3>All Songs</h3>
+
+						<table class = "table">
+							<thread>
+								<tr>
+									<th>Title</th>
+									<th>Audio File</th>
+									<th>Favorite</th>
+									<th>Actions</th>
+								</tr>
+							</thread>
+						</table>
+					</div>
+				</div>
+
+{% endblock %}
