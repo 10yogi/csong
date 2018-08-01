@@ -1,2 +1,4 @@
 # Django-Csong
-this is cloud site for storing you music with too extremly organised manner.
+This is music cloud app;
+framework used : Django
+skills : python, sql, html, css, bootstrap;
